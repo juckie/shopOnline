@@ -1,41 +1,42 @@
-
-version '1.0'
-
 buildscript{
     repositories{
         mavenCentral()
     }
     dependencies{
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.+")
-        classpath("org.flywaydb:flyway-gradle-plugin:3.+")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.5RELEASE")
+        //classpath("org.flywaydb:flyway-gradle-plugin:3.+")
     }
 }
 
 apply plugin: 'java'
-apply plugin: 'idea'
+//apply plugin: 'idea'
 apply plugin: 'spring-boot'
-apply plugin: 'org.flywaydb.flyway'
+//apply plugin: 'org.flywaydb.flyway'
 
 jar{
-    baseName = "SpringData"
+    baseName = "shopOnline"
     version = "1.0.0"
 }
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-data-jpa:1.+")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    //compile("org.springframework.boot:spring-boot-starter-data-jpa:1.+")
     //compile("org.springframework.boot:spring-boot-starter-freemarker:1.+")
-    compile("org.springframework.boot:spring-boot-starter-web:1.2+")
+    //compile("org.springframework.boot:spring-boot-starter-web:1.2+")
     runtime("mysql:mysql-connector-java:5.+")
 }
 
-gradle.projectsEvaluated {
-    tasks.withType(JavaCompile) {
-        options.compilerArgs << "-Xlint:unchecked"
-    }
-}
+//gradle.projectsEvaluated {
+  //  tasks.withType(JavaCompile) {
+  //      options.compilerArgs << "-Xlint:unchecked"
+ //   }
+//}
+
+defaultTasks "build"
